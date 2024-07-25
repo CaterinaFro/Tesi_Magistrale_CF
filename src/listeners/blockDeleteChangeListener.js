@@ -11,11 +11,12 @@ export function getAllClassBlocksinWs() {
   let blocksArray = Object.values(nameBlockInWS);
   let i = 0;
   while (i < blocksArray.length) {
+    const name = String(blocksArray[i].name).trim();
+    if (name !== '') 
     className.push(`${String(blocksArray[i].name)} (${String(blocksArray[i].type)})`);
     i++;
   }
-  console.log("classssssname")
-  console.log(className)
+
   return className;
 }
 

@@ -5,23 +5,6 @@ export const removeBlockType = (name) => {
   return name.replace(/\s*\(.*?\)\s*/g, "");
 };
 
-// export const remove_empty = (target) => {
-//   Object.keys(target).map(function (key) {
-//     if (target[key] instanceof Object) {
-//       if (
-//         !Object.keys(target[key]).length &&
-//         typeof target[key].getMonth !== "function"
-//       ) {
-//         delete target[key];
-//       } else {
-//         remove_empty(target[key]);
-//       }
-//     } else if (target[key] === null) {
-//       delete target[key];
-//     }
-//   });
-//   return target;
-// };
 
 export const blockAlreadyInWs = (new_block_name, blockType) => {
   if (
@@ -31,24 +14,34 @@ export const blockAlreadyInWs = (new_block_name, blockType) => {
   ) {
     return false;
   }
+
+  const defaultNames = ['user', 'irrigation', 'field', 'water'];
   let blocks = ws.getAllBlocks(true);
-  let counter = -1;
+  let counter = 0;
 
   for (let i = 0; i < blocks.length; i++) {
-    if (blocks[i].getFieldValue("NAME") !== null) {
-      if (
-        new_block_name.localeCompare(
-          blocks[i].getFieldValue("NAME").toLowerCase()
-        ) == 0 &&
-        blocks[i].type == blockType
-      ) {
+    const blockName = blocks[i].getFieldValue("NAME");
+
+    if (blockName !== null && blockName !== "..............." && blockName !== "") {
+      console.log(`Comparing: ${new_block_name} with ${blockName.toLowerCase()}`);
+      if (new_block_name.localeCompare(blockName.toLowerCase()) === 0 &&
+          !["custom_attribute", "custom_operation", "custom_generalization"].includes(blocks[i].type)) {
         counter++;
       }
     }
   }
 
-  return counter > 0;
+  console.log(`Counter for ${new_block_name}:`, counter);
+
+  // Controllo specifico per blocchi con nomi predefiniti
+  if (defaultNames.includes(new_block_name)) {
+    return counter > 0;
+  }
+
+  return counter > 1; // Return true if there is more than one block with the same name
 };
+
+
 
 export const reset = (blockName, type, isDeleted = false) => {
   let blocks = ws.getAllBlocks(true);

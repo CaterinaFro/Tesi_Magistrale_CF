@@ -22,7 +22,7 @@ export const custom_tool = function(block) {
       var statements_generalizations = generator.statementToCode(block, "GENERALIZATIONS");
       return {
         type: "irrigation_tool",
-        name: block.getFieldValue("NAME"),
+        name: "Irrigation",
         activities: statements_operations || [],
         attributes: statements_attributes || [],
         specialisations: statements_generalizations || []

@@ -13,11 +13,13 @@ export function convertToXMI(json) {
 
     // Aggiungi attori
     (json.blocks[0].actors || []).forEach(actor => {
+        // const actorNameWithSuffix = actor.name ? actor.name + "_act" : "";
         pack_data += createXMIElement("Class", actor.name, actor.attributes, actor.activities);
     });
 
     // Aggiungi risorse e componenti digitali
     (json.blocks[0].resources || []).forEach(resource => {
+        // const resourceNameWithSuffix = resource.name ? resource.name + "_res" : "";
         const aggregations = resource.aggregation ? [resource.aggregation] : [];
         pack_data += createXMIElement("Class", resource.name, resource.attributes, resource.activities, resource.specialisations, aggregations);
     });

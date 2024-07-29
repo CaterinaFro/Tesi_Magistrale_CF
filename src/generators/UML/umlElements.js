@@ -1,12 +1,13 @@
+
 export function createUMLClass(element, excludedOperations = []) {
   let umlClass = `class ${element.name.replace(" ", '_')} {\n`;
-
+  //Aggiunta degli Attributi:
   if (element.attributes != null) {
     element.attributes.forEach(attr => {
       umlClass += `${attr.name.replace(" ", '_')}\n`;
     });
   }
-
+  //Aggiunta delle Operazioni:
   if (element.operations != null) {
     element.operations.forEach(oper => {
       if (!excludedOperations.includes(oper.name.replace(" ", '_'))) {

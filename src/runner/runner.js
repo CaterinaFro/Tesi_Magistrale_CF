@@ -12,7 +12,10 @@ export const runCode = () => {
   const objectWS = VIEWS.displayJSON(ws);
   const { sanitizedXMI, xmiWS } = VIEWS.displayXMI(objectWS);
   VIEWS.displayReport(objectWS);
-  //const cleanedXmiWs = cleanXmi
   VIEWS.displayUML(xmiWS);
+  console.log("CIAOOOOOOOOO");
+  console.log(VIEWS.displayBPMN(objectWS));
+  
+
   
 };

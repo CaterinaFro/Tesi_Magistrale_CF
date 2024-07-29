@@ -1,3 +1,4 @@
+import { displayBPMN } from "./bpmnView";
 import { displayJSON } from "./jsonView";
 import { displayReport } from "./reportView";
 import { displayUML } from "./umlView";
@@ -7,5 +8,6 @@ export const VIEWS = {
     displayJSON,
     displayXMI,
     displayUML,
-    displayReport
+    displayReport,
+    displayBPMN
 }

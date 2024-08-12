@@ -94,4 +94,5 @@ export function parseJSONToIStar(jsonData) {
     });
 
     return { arrayistaractors, arrayistardependencies };
+    
 }

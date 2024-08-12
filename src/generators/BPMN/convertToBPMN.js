@@ -30,7 +30,6 @@ export function convertToBPMN(jsonData) {
 
     // Creazione dei file BPMN per ogni attore
     validActors.forEach(actor => {
-        const actorNameCleaned = cleanName(actor.name);
         let bpmnString = `<?xml version="1.0" encoding="UTF-8"?>\n`;
 
         // intestazione
@@ -57,9 +56,10 @@ export function convertToBPMN(jsonData) {
         if (actor.activities && actor.activities.length > 0) {
             actor.activities.forEach(activity => {
                 const activityId = `Activity_${generateID(activity.name)}`;
-                const targetName = cleanName(activity.target);
 
-                if (targetName) {
+                    //consideriamo che login non ha target
+                if (activity.target !== "NONE" && activity.target != undefined) {
+                    const targetName = cleanName(activity.target);
                     const targetActor = validActors.find(a => cleanName(a.name) === targetName) || { name: actor.name };
                     const messageFlowId = `Flow_${generateRandID()}`;
                     messageFlows += `

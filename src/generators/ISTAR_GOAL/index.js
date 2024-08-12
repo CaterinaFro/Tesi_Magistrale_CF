@@ -1,1 +1,5 @@
-import { convertToIstar } from "./convertToISTAR";
+export {convertToIstar} from './convertToISTAR.js'
+
+
+
+

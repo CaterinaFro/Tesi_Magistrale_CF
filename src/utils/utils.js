@@ -27,20 +27,4 @@ export const generateID = (nomeClasse) => {
 export function cleanName(name) {
   return name.replace(/\s*\(.*?\)$/, '').toLowerCase();
 }
-  
 
-// export const processAct = (input) => {
-//     const parts = input.split(':'); // Divide la stringa in base al carattere ':'
-//     const stringElements = parts[0].split(';');
-//     const operations = [];
-  
-//     // Crea un oggetto per ogni tripletta
-//     for (let i = 0; i < stringElements.length; i += 3) {
-//         operations.push({
-//             name: stringElements[i],
-//             target_actor: stringElements[i + 1],
-//             motivation: stringElements[i + 2],
-//         });
-//     }
-//     return JSON.stringify(operations, null, 2); // Stampa il JSON formattato con indentazione
-//   }

@@ -13,9 +13,10 @@ export const runCode = () => {
   const { sanitizedXMI, xmiWS } = VIEWS.displayXMI(objectWS);
   VIEWS.displayReport(objectWS);
   VIEWS.displayUML(xmiWS);
-  console.log("CIAOOOOOOOOO");
+  
+  console.log("BPMN");
   console.log(VIEWS.displayBPMN(objectWS));
-  
-
-  
+  console.log("IstarStatement");
+  console.log(VIEWS.displayISTAR(objectWS));
+  console.log(JSON.stringify(VIEWS.displayISTAR(objectWS)));
 };

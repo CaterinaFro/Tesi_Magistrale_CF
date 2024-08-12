@@ -1,7 +1,5 @@
 import reader from '../../libs/xmi21-reader.js';
-import plantumlEncoder from 'plantuml-encoder';
 import { createUMLClass, createGeneralizations, createAssociations, createAggregations } from './umlElements.js';
-import { DOM_NODES } from '../../utils/domElements.js';
 import { cleanXmi } from '../../runner/views/umlView.js';
 
 

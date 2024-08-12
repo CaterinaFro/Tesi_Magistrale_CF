@@ -3,6 +3,9 @@ import { parseJSONToIStar } from "./istarElements";
 export function convertToIstar(jsonData) {
     const { arrayistaractors, arrayistardependencies } = parseJSONToIStar(jsonData);
     const links = [];
+    if (arrayistaractors.length === 0) {
+        return {}; // Restituisci un oggetto vuoto
+    }
 
     arrayistaractors.forEach(actor => {
         const actor_activities = actor.nodes;

@@ -25,10 +25,12 @@ export function createUMLClass(element, excludedOperations = []) {
   export function createGeneralizations(e, generalizations) {
     let umlString = "";
     generalizations.forEach(element => {
-      umlString += `${ea.name.replce(" ", '_')} <|-- ${element.name.replace(" ", '_')}\n`;
+      umlString += `${e.name.replace(" ", '_')} <|-- ${element.name.replace(" ", '_')}\n`;
     });
     return umlString;
   }
+
+
   
   export function createAssociations(e, associations) {
     let umlString = "";
